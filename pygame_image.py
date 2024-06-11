@@ -13,6 +13,8 @@ def main():
     bg_flp = pg.transform.flip(bg_img, True, False)
     kk = pg.image.load("fig/3.png")
     kk = pg.transform.flip(kk, True, False)
+    kk_rct = kk.get_rect()      #こうかとんRectの抽出
+    kk_rct.center = 300, 200
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -23,8 +25,19 @@ def main():
         screen.blit(bg_flp, [-x+1600, 0])
         screen.blit(bg_img, [-x+3200, 0])
         screen.blit(bg_flp, [-x+4800, 0])
-        kk_rct = kk.get_rect()      #こうかとんRectの抽出
-        kk_rct.center = 300, 200
+        key_lst = pg.key.get_pressed()
+        if key_lst[pg.K_UP]:
+            kk_rct.move_ip(0, -1)
+            screen.blit(kk, kk_rct)
+        if key_lst[pg.K_DOWN]:
+            kk_rct.move_ip(0, 1)
+            screen.blit(kk, kk_rct)
+        if key_lst[pg.K_LEFT]:
+            kk_rct.move_ip(-1, 0)
+            screen.blit(kk, kk_rct)
+        if key_lst[pg.K_RIGHT]:
+            kk_rct.move_ip(1, 0)
+            screen.blit(kk, kk_rct)
         screen.blit(kk, kk_rct)     #birdをbird_rctの設定に従って貼付け
         pg.display.update()
         tmr += 1        
