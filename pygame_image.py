@@ -26,18 +26,21 @@ def main():
         screen.blit(bg_img, [-x+3200, 0])
         screen.blit(bg_flp, [-x+4800, 0])
         key_lst = pg.key.get_pressed()
+        kk_rct.move_ip(-1, 0)
+        
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip(0, -1)
+            kk_rct.move_ip(-1, -1)
             screen.blit(kk, kk_rct)
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip(0, 1)
+            kk_rct.move_ip(-1, 1)
             screen.blit(kk, kk_rct)
         if key_lst[pg.K_LEFT]:
             kk_rct.move_ip(-1, 0)
             screen.blit(kk, kk_rct)
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(1, 0)
+            kk_rct.move_ip(2, 0)
             screen.blit(kk, kk_rct)
+            tmr += 1
         screen.blit(kk, kk_rct)     #birdをbird_rctの設定に従って貼付け
         pg.display.update()
         tmr += 1        
