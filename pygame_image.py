@@ -17,7 +17,7 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-tmr, 0])
+        screen.blit(bg_img, [0, 0])
         kk_rct = kk.get_rect()      #こうかとんRectの抽出
         kk_rct.center = 300, 200
         screen.blit(kk, kk_rct)     #birdをbird_rctの設定に従って貼付け
