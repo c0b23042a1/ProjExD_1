@@ -10,17 +10,20 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
-    bird = pg.image.load("fig/3.png")
-    bird = pg.transform.flip(bird, True, False)
+    kk = pg.image.load("fig/3.png")
+    kk = pg.transform.flip(kk, True, False)
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])
+        screen.blit(bg_img, [-tmr, 0])
+        kk_rct = kk.get_rect()      #こうかとんRectの抽出
+        kk_rct.center = 300, 200
+        screen.blit(kk, kk_rct)     #birdをbird_rctの設定に従って貼付け
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(200)
 
 
 if __name__ == "__main__":
